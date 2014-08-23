@@ -1,0 +1,9 @@
+Start game
+Exit
+Back to game
+Return to menu
+What happened here!?
+Maybe someone broke the connection?
+I need to check it.
+Just as I thought...
+I do not know who did it, but I have to fix it.
