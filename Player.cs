@@ -127,7 +127,7 @@ namespace ld48
 
         public void Jump()
         {
-            if (!Jumping && !Falling) { Jumping = true; }
+            if (!Jumping && !Falling && World.GetBlock((int)Position.X, (int)Position.Y - 1, 0) == 0) { Jumping = true; }
         }
     }
 }

@@ -17,7 +17,9 @@ namespace ld48
                       wood         = new Sprite(new Texture("data/img/wood.png")),
                       leaves       = new Sprite(new Texture("data/img/leaves.png")),
                       portaldown   = new Sprite(new Texture("data/img/portal-down.png")),
-                      portalup     = new Sprite(new Texture("data/img/portal-up.png"));
+                      portalup     = new Sprite(new Texture("data/img/portal-up.png")),
+                      off          = new Sprite(new Texture("data/img/off.png")),
+                      on           = new Sprite(new Texture("data/img/on.png"));
 
         public static Sprite Man      = new Sprite(new Texture("data/img/man.png")),
                              Bomb     = new Sprite(new Texture("data/img/bomb.png"));
@@ -28,7 +30,9 @@ namespace ld48
                           Wood        = 4,
                           Leaves      = 5,
                           PortalDown  = 6,
-                          PortalUp    = 7;
+                          PortalUp    = 7,
+                          Off         = 8,
+                          On          = 9;
 
         public static Sprite GetTexture(int id)
         {
@@ -39,6 +43,8 @@ namespace ld48
             else if (id == Leaves) { return leaves; }
             else if (id == PortalDown) { return portaldown; }
             else if (id == PortalUp) { return portalup; }
+            else if (id == Off) { return off; }
+            else if (id == On) { return on; }
 
 
             return nothing;

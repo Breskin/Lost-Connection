@@ -19,7 +19,10 @@ namespace ld48
 
         public string UsingWorld = "data/levels/main.lvl";
 
+        int TextNumber = 9, TalkTime = 0, TalkLenght = 0;
+
         bool WaitForEscape = false;
+        bool EndedTutorial = false;
 
         public Game(Program b)
         {
@@ -75,15 +78,56 @@ namespace ld48
 
             Player.RenderMessage(window);
 
-            //if (Keyboard.IsKeyPressed(Keyboard.Key.Escape) && !WaitForEscape) { WaitForEscape = true; }
-            //else if (!Keyboard.IsKeyPressed(Keyboard.Key.Escape) && WaitForEscape) { Program.GamePaused = !Program.GamePaused; WaitForEscape = false; }
+            if (UsingWorld != "data/levels/intro.lvl")
+            {
+                if (Keyboard.IsKeyPressed(Keyboard.Key.Escape) && !WaitForEscape) { WaitForEscape = true; }
+                else if (!Keyboard.IsKeyPressed(Keyboard.Key.Escape) && WaitForEscape) { Program.GamePaused = !Program.GamePaused; WaitForEscape = false; }
+            }
+            else { EndedTutorial = true; }
 
-            if (!Program.GamePaused) { CheckEvents(window); }
+            if (!Program.GamePaused && EndedTutorial) { CheckEvents(window); Console.WriteLine(Player.Position.Y); }
         }
 
-        void Update()
+        public virtual void Update()
         {
-
+            if (!EndedTutorial && TalkTime + TalkLenght < Environment.TickCount)
+            {
+                Player.Say(Language.Text[TextNumber]); TalkTime = Environment.TickCount; TalkLenght = Player.GetSpeakTime(Language.Text[TextNumber]) + 250; TextNumber++;
+                if (TextNumber == 11) { EndedTutorial = true; }
+            }
+            else if ((int)Player.Position.X == 26 && TextNumber == 11)
+            {
+                Player.Say(Language.Text[TextNumber]); TextNumber++;
+            }
+            else if ((int)Player.Position.X == 37 && TextNumber == 12)
+            {
+                Player.Say(Language.Text[TextNumber]); TextNumber++;
+            }
+            else if ((int)Player.Position.X == 50 && TextNumber == 13)
+            {
+                Player.Say(Language.Text[TextNumber]); TextNumber++;
+            }
+            else if ((int)Player.Position.X == 62 && TextNumber == 14)
+            {
+                Player.Say(Language.Text[TextNumber]); TextNumber++;
+            }
+            else if ((int)Player.Position.X == 100 && TextNumber == 15)
+            {
+                Player.Say(Language.Text[TextNumber]); TextNumber++;
+            }
+            else if ((int)Player.Position.X == 127 && TextNumber == 16)
+            {
+                Player.Say(Language.Text[TextNumber]); TextNumber++;
+            }
+            else if ((int)Player.Position.X == 138 && TextNumber == 17)
+            {
+                Player.Say(Language.Text[TextNumber]); TextNumber++;
+            }
+            else if ((int)Player.Position.X == 151 && TextNumber == 18)
+            {
+                Player.Say(Language.Text[TextNumber]); TextNumber++;
+                World.SetBlock(152, 51, 0, 9);
+            }
         }
 
         public virtual void CheckEvents(RenderWindow window)
@@ -125,6 +169,8 @@ namespace ld48
                 if (Keyboard.IsKeyPressed(Keyboard.Key.Num5)) { if (Keyboard.IsKeyPressed(Keyboard.Key.LShift)) SelectedZ = 5; else SelectedBlock = 5; }
                 if (Keyboard.IsKeyPressed(Keyboard.Key.Num6)) { if (Keyboard.IsKeyPressed(Keyboard.Key.LShift)) SelectedZ = 6; else SelectedBlock = 6; }
                 if (Keyboard.IsKeyPressed(Keyboard.Key.Num7)) { if (Keyboard.IsKeyPressed(Keyboard.Key.LShift)) SelectedZ = 7; else SelectedBlock = 7; }
+                if (Keyboard.IsKeyPressed(Keyboard.Key.Num8)) { if (Keyboard.IsKeyPressed(Keyboard.Key.LShift)) SelectedZ = 8; else SelectedBlock = 8; }
+                if (Keyboard.IsKeyPressed(Keyboard.Key.Num9)) { if (Keyboard.IsKeyPressed(Keyboard.Key.LShift)) SelectedZ = 9; else SelectedBlock = 9; }
             }
         }
     }

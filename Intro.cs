@@ -30,6 +30,11 @@ namespace ld48
             IntroStart = Environment.TickCount;
         }
 
+        public override void Update()
+        {
+            
+        }
+
         public override void Render(RenderWindow window)
         {
             for (int i = 0; i < Bombs.Count; i++)

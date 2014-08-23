@@ -31,7 +31,7 @@ namespace ld48
             Texts.Add(new Text(Text));
 
             Text.DisplayedString = Language.Text[1];
-            Text.Position = new Vector2f(15, (int)(Text.Position.Y + Program.P1 * 5f));
+            Text.Position = new Vector2f(15, (int)(Text.Position.Y + Program.P1 * 7f));
             Texts.Add(new Text(Text));
 
 
