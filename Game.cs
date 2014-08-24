@@ -14,7 +14,7 @@ namespace ld48
         public World World;
         public Player Player;
 
-        bool EditMode = true, WaitingForSave = false;
+        bool EditMode = false, WaitingForSave = false;
         int SelectedBlock = 0, SelectedZ = 0;
 
         public string UsingWorld = "data/levels/main.lvl";
@@ -85,7 +85,7 @@ namespace ld48
             }
             else { EndedTutorial = true; }
 
-            if (!Program.GamePaused && EndedTutorial) { CheckEvents(window); Console.WriteLine(Player.Position.Y); }
+            if (!Program.GamePaused && EndedTutorial) { CheckEvents(window); }
         }
 
         public virtual void Update()
